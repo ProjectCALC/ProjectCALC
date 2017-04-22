@@ -24,15 +24,15 @@ while not done:
 
         pressed = pygame.key.get_pressed()
         
-        if pressed[pygame.K_w]:
+        if pressed[pygame.K_w] and y > 0:
             y -= 3
-        if pressed[pygame.K_s]:
+        if pressed[pygame.K_s] and y < 600 - 60:
             y += 3
-        if pressed[pygame.K_a]:
+        if pressed[pygame.K_a] and x > 0:
             x -= 3
             screen.fill([255,255,255])
             screen.blit(wizard_left, (x, y, 20, 20))
-        if pressed[pygame.K_d]:
+        if pressed[pygame.K_d] and x < 800 - 60:
             x += 3
             screen.fill([255,255,255])
             screen.blit(wizard_right, (x, y, 20, 20))
