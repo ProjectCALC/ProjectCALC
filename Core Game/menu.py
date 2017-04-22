@@ -24,6 +24,8 @@ def game():
         cc.show_char()
         cc.confirm()
         print('Great! Now, it''s time for you to go. But be careful! Creatures roam the night, as well as the day, so be weary of where you''re going.')
+        character_movement.main()
+        sys.exit()
     elif menu == 'Load Game':
         print('Loading saved game...')
         time.sleep(2)
@@ -33,7 +35,7 @@ def game():
         if load_continue == 'No' or 'no' or 'n':
             game()
         elif load_continue == 'Yes' or 'yes' or 'y':
-            calcrpg.main()
+            character_movement.main()
             sys.exit()        
     else:
         sys.exit()
