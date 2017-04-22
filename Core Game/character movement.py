@@ -20,9 +20,7 @@ while not done:
                     done = True
         screen.fill((255,255,255))
         img = pygame.image.load('images\wizardright.png')
-        sword_img = pygame.image.load('images\wizardswordleft.png')
-        grass = pygame.image.load('images\grass.jpg')
-        screen.blit(grass, (0,0,20,20))         
+        sword_img = pygame.image.load('images\wizardswordleft.png')   
         screen.blit(img, (x, y, 20, 20))
 
         pressed = pygame.key.get_pressed()
