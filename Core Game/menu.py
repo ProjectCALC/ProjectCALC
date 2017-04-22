@@ -6,7 +6,8 @@ import character_movement
 
 
 def game():
-    menu = easygui.buttonbox('Welcome to CalcRPG',
+    image = "Image_P.gif"
+    menu = easygui.buttonbox('Welcome to CalcRPG(ProjectCALC)',image=image,
                              choices = ['New Game','Load Game','Exit'] )
 
     if menu == 'New Game':
@@ -40,4 +41,3 @@ def game():
     else:
         sys.exit()
 game()
-
