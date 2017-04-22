@@ -32,9 +32,9 @@ def game():
         cc.load()
         time.sleep(1)
         load_continue = input('Continue?(Yes or No) ')
-        if load_continue == 'No' or 'no':
+        if load_continue == 'No' or 'no' or 'n':
             game()
-        elif load_continue == 'Yes' or 'yes':
+        elif load_continue == 'Yes' or 'yes' or 'y':
             calcrpg.main()
             sys.exit()        
     else:
