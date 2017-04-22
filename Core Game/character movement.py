@@ -4,8 +4,7 @@ import random
          
 wizard_right = pygame.image.load('images\wizardright.png')
 wizard_left = pygame.image.load('images\wizardleft.png')
-wizard_right_sword = pygame.image.load('images\wizardswordright.png')
-wizard_left_sword = pygame.image.load('images\wizardswordleft.png')
+
 pygame.init()
 screen = pygame.display.set_mode((400, 300))
 pygame.display.set_caption('CalcRPG')
