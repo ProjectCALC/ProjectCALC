@@ -2,7 +2,7 @@ import easygui
 import sys
 import time
 import character_creation as cc
-import calcrpg
+import character_movement
 
 
 def game():
