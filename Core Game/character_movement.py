@@ -6,9 +6,11 @@ import random
 def main():
          wizard_right = pygame.image.load('images\wizardright.png')
          wizard_left = pygame.image.load('images\wizardleft.png')
-
+         icon = pygame.image.load('image.png')
+         
          pygame.init()
          screen = pygame.display.set_mode((400, 300))
+         pygame.display.set_icon(icon)
          pygame.display.set_caption('CalcRPG')
          done = False
          x = 30
