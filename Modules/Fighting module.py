@@ -17,7 +17,7 @@ class Player(Character):
     def attack(self, other):
         answer = input("What move would you like to make (punch, kick or headbutt)? ")
         if answer.lower() in ('punch', 'kick', 'headbutt'):
-            other.health -= int(random.randint(1, 100) / 
+            other.health -= int(random.randint(1, 50) / 
                                 (random.uniform(0, 1) * other.defense))
         else:
             print("you stumble...")
@@ -51,6 +51,14 @@ def battle(player, enemy):
         print("The {0.name} killed you.".format(enemy))
 
 if __name__ == '__main__':
-    enemies = [Enemy("Boar", 10, 5, 100), Enemy("Wolf", 20, 10, 100),
-               Enemy("Lion", 30, 20, 100), Enemy ("Dragon", 40, 30, 130)]
+    enemies = [Enemy("Goblin", 1, 5, 10), Enemy("Skeleton", 3, 7, 10),
+               Enemy("Spider", 5, 8, 20), Enemy ("Orc", 6, 9, 20), 
+               Enemy ("Dwarf", 7, 9, 20), Enemy("Elf", 9, 11, 30), 
+               Enemy ("Demon", 11, 12, 40), Enemy("Goblin King", 20, 15, 50), 
+               Enemy("Skeleton Lord", 25, 17, 50), Enemy("Giant Spider", 27, 19, 60),
+               Enemy("Orc Leader", 31, 20, 60), Enemy("Dwarf King", 32, 21, 60),
+               Enemy("Grand Elf", 34, 22, 70), Enemy("Demon Lord", 36, 24, 100), 
+               Enemy("Soldier", 5, 8, 10), Enemy("Super Soldier", 10, 14, 25), 
+               Enemy("Healer", 3, 27, 20), Enemy("Wizard", 64, 12, 50), 
+               Enemy("Fairy", 35, 3, 50), Enemy("Fairy God", 65, 18, 100)]
     battle(Player(), random.choice(enemies))
