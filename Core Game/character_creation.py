@@ -46,37 +46,37 @@ def age_func():
                                             age = input('Age: (19 to 40): ')
                                             num_age = int(age)
 
-def m_bday():
-        
-                                            global month_bday
-                                            month_bday = input('Month of Birth: (01 to 12) ')
-                                            num_month_bday = int(month_bday)
-                                            long_months = ['01','03','05','07','08','10','12']
-                                            short_months = ['04','06','09','11']
-                                            febuary = '02'
-                                            while num_month_bday > 1 or num_month_bday < 12:
-                                                    if month_bday in long_months:
-                                                            global limit
-                                                            limit = '31'
-                                                    elif month_bday in short_months:
-                                                            limit = '30'
-                                                    elif month_bday == febuary:
-                                                            limit ='28'    
-                                            num_month_bday = int(month_bday)
-                                            while num_month_bday < 1 or num_month_bday > 12:
-                                                print('Please enter a valid month.')
-                                                month_bday = input('Month of Birth: (1 to 12) ')
-                                                num_month_bday = int(month_bday)
-
-def d_bday():
-                                                    global day_bday
-                                                    day_bday = input('Day of Birth: (1 to '+limit+') ')
-                                                    num_day_bday = int(day_bday)
-                                                    while  num_day_bday < 1 or num_day_bday > int(limit):
-                                                        print('Please enter a valid day of birth.')
-                                                        day_bday = input('Day of Birth: (1 to '+limit+') ')
-                                                        num_day_bday = int(day_bday)
-
+##def m_bday():
+##        
+##                                            global month_bday
+##                                            month_bday = input('Month of Birth: (01 to 12) ')
+##                                            num_month_bday = int(month_bday)
+##                                            long_months = ['01','03','05','07','08','10','12']
+##                                            short_months = ['04','06','09','11']
+##                                            febuary = '02'
+##                                            while num_month_bday > 1 or num_month_bday < 12:
+##                                                    if month_bday in long_months:
+##                                                            global limit
+##                                                            limit = '31'
+##                                                    elif month_bday in short_months:
+##                                                            limit = '30'
+##                                                    elif month_bday == febuary:
+##                                                            limit ='28'    
+##                                            num_month_bday = int(month_bday)
+##                                            while num_month_bday < 1 or num_month_bday > 12:
+##                                                print('Please enter a valid month.')
+##                                                month_bday = input('Month of Birth: (1 to 12) ')
+##                                                num_month_bday = int(month_bday)
+##
+##def d_bday():
+##                                                    global day_bday
+##                                                    day_bday = input('Day of Birth: (1 to '+limit+') ')
+##                                                    num_day_bday = int(day_bday)
+##                                                    while  num_day_bday < 1 or num_day_bday > int(limit):
+##                                                        print('Please enter a valid day of birth.')
+##                                                        day_bday = input('Day of Birth: (1 to '+limit+') ')
+##                                                        num_day_bday = int(day_bday)
+##
 def class_func():
                                                             global char_class
                                                             char_class_list = ['Fighter', 'Wizard','Rogue', 'Explorer', 'Scholar']
@@ -89,18 +89,17 @@ def show_char():
                                                                     
                                                                     print('')
                                                                     print('Your character: ')
-                                                                    print('Name: '+first_name+' '+last_name+'')
-                                                                    
+                                                                    print('Name: '+first_name+' '+last_name+'')                                                             
                                                                     print('Gender: '+gender+'')
                                                                     print('Age: '+age+'')
-                                                                    "print('Birthday: '+month_bday+'/'+day_bday+'')"
+                                                                    ##print('Birthday: '+month_bday+'/'+day_bday+'')
                                                                     print('Class: '+char_class+'')
                                                                     print('')
 
 def confirm():
                                                                         confirm_character_creation = input('Is this character ok? (Yes or No) ')
                                                                         if confirm_character_creation == 'No':
-                                                                            wrong = input('What''s wrong? (First Name, Last Name, Gender, Age, Month of Birth, Day of Birth, Class, Nothing) ')
+                                                                            wrong = input('What''s wrong? (First Name, Last Name, Gender, Age, Class, Nothing) ')
                                                                             if wrong == 'first name' or wrong == 'First Name':
                                                                                 fn()
                                                                                 confirm()
@@ -123,7 +122,7 @@ def confirm():
                                                                                 confirm()
 
                                                                         if confirm_character_creation == 'Yes':
-                                                                                character = [first_name, last_name, gender, age, month_bday, day_bday, char_class]
+                                                                                character = [first_name, last_name, gender, age, char_class]
                                                                                 character_save = open('character.txt','wb')
                                                                                 pickle.dump(character, character_save)
                                                                                 character_save.close()
@@ -137,8 +136,7 @@ def load():
             print(''+char_list[0]+' '+char_list[1]+'')
             print(char_list[2])
             print(char_list[3])
-            print(''+char_list[4]+'/'+char_list[5]+'')
-            print(char_list[6])
+            print(char_list[4])
 
                     
                     
