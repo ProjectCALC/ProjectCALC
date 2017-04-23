@@ -33,9 +33,9 @@ def game():
         cc.load()
         time.sleep(1)
         load_continue = input('Continue?(Yes or No) ')
-        if load_continue == 'No' or 'no' or 'n':
+        if load_continue == 'No' or load_continue == 'no' or load_continue == 'n':
             game()
-        elif load_continue == 'Yes' or 'yes' or 'y':
+        elif load_continue == 'Yes' load_continue == or 'yes' or load_continue == 'y':
             character_movement.main()
             sys.exit()        
     else:
