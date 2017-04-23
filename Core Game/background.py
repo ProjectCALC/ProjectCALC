@@ -23,7 +23,6 @@ def main():
                  x = x + 50
                  screen.blit(img, (x, y, 20, 20))
                  test +=1
-                 print (test)
          else:
              print('yay')
 
