@@ -35,7 +35,7 @@ def main():
                      x -= 3
                      screen.fill([255,255,255])
                      screen.blit(wizard_left, (x, y, 20, 20))
-                 if pressed[pygame.K_d] and x < 300 - 15:
+                 if pressed[pygame.K_d] and x < 300 - 5:
                      x += 3
                      screen.fill([255,255,255])
                      screen.blit(wizard_right, (x, y, 20, 20))
