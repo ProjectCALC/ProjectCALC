@@ -73,8 +73,8 @@ def main():
 
 def randomizer():        
     number = random.randint(1, 100)
-    while number > 90:
+    while number > 45:
         number = random.randint(1, 100)
-    if number < 90:
+    if number < 45:
         main()
 
