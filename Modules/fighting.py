@@ -1,5 +1,8 @@
 import random
 import time
+
+
+
 def main():
     class Character:
 
@@ -35,7 +38,9 @@ def main():
             other.health -= int(self.strength * random.uniform(0.1, 1.4))
 
     def battle(player, enemy):
-        print ("An enemy {0.name} appears...".format(enemy))
+        print ("An enemy {0.name} appears!".format(enemy))
+        print("{0.name} = {0.health} HP".format(enemy))
+        print("Your health = {0.health} HP".format(player))
         # Combat loop
         while player.health > 0 and enemy.health > 0:
             player.attack(enemy)
@@ -47,8 +52,11 @@ def main():
         # Display outcome
         if player.health > 0:
             print("You killed the {0.name}.".format(enemy))
+            randomizer()
         elif enemy.health > 0:
             print("The {0.name} killed you.".format(enemy))
+
+    
 
     if __name__ == '__main__':
         enemies = [Enemy("Goblin", 1, 5, 10), Enemy("Skeleton", 3, 7, 10),
@@ -62,3 +70,11 @@ def main():
                    Enemy("Healer", 3, 27, 20), Enemy("Wizard", 64, 12, 50), 
                    Enemy("Fairy", 35, 3, 50), Enemy("Fairy God", 65, 18, 100)]
         battle(Player(), random.choice(enemies))
+
+def randomizer():        
+    number = random.randint(1, 100)
+    while number > 90:
+        number = random.randint(1, 100)
+    if number < 90:
+        main()
+
