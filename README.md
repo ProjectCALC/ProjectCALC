@@ -1,2 +1,2 @@
 # ProjectCALC
-Please put the files in the right folder.
+Please put your files in the right folder.
