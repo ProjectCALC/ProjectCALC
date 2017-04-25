@@ -1,4 +1,4 @@
 # ProjectCALC
-Please put your files in the right folder.
+Please scroll down and check what you need to do.
 
 ![My image](game_map.png)
