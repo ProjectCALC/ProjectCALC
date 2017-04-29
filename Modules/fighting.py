@@ -23,18 +23,21 @@ def main():
             super().__init__(health)
 
         def attack(self, other):
+            weapon.main()
             answer = input("What move would you like to make (Fight, Magic or Item)? ")
             if answer.lower() in ['fight','magic','item']:
                 if answer.lower() == 'fight':
-                    weapon_list = pickle.load( open( "weapons.txt", "rb" ) )
+                    weapon_list = pickle.load(open("weapons.txt", "rb"))
                     for weapon in weapon_list:
                         print (weapon_list)
                     weapon_choice = input('Which weapon would you like to use?')
                     while weapon_choice not in weapon_list:
                         print('Please enter a valid weapon name.')
-                        weapon_choice = input('Which weapon would you like to use?')
+                        weapon_choice = input('Which weapon would you like to use? (Enter the number)')
                     if weapon_choice in weapon_list:
-                        weapons.main()
+                        if weapon_choice = '1':
+                            other.health -= int(weapon.sword)
+                            
             while answer.lower() not in ['fight','magic','item']:
                 print('Please enter a valid option.')
                 answer = input("What move would you like to make (Fight, Magic or Item)? ")
