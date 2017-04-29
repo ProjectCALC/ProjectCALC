@@ -24,15 +24,21 @@ def main():
 
         def attack(self, other):
             answer = input("What move would you like to make (Fight, Magic or Item)? ")
-            if answer.lower() == 'fight':
-                weapons.main()
-                weapon_list = weapons.weapon_names[0]
-                for weapon in weapon_list:
-                    print (weapon_list)
-##                other.health -= int(random.randint(1, 50) / 
-##                                    (random.uniform(0, 1) * other.defense))
-            else:
-                print("you stumble...")
+            if answer.lower() in ['fight','magic','item']:
+                if answer.lower() == 'fight':
+                    weapon_list = pickle.load( open( "weapons.txt", "rb" ) )
+                    for weapon in weapon_list:
+                        print (weapon_list)
+                    weapon_choice = input('Which weapon would you like to use?')
+                    while weapon_choice not in weapon_list:
+                        print('Please enter a valid weapon name.')
+                        weapon_choice = input('Which weapon would you like to use?')
+                    if weapon_choice in weapon_list:
+                        weapons.main()
+            while answer.lower() not in ['fight','magic','item']:
+                print('Please enter a valid option.')
+                answer = input("What move would you like to make (Fight, Magic or Item)? ")
+                
 
     class Enemy(Character):
 
