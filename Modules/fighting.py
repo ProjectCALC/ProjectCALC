@@ -1,5 +1,9 @@
 import random
 import time
+import sys
+import level_module
+import weapons
+import pickle
 
 
 
@@ -10,6 +14,7 @@ def main():
             self.health = health
 
         def attack(self, other):
+            
             raise NotImplementedError
 
     class Player(Character):
@@ -18,10 +23,14 @@ def main():
             super().__init__(health)
 
         def attack(self, other):
-            answer = input("What move would you like to make (punch, kick or headbutt)? ")
-            if answer.lower() in ('punch', 'kick', 'headbutt'):
-                other.health -= int(random.randint(1, 50) / 
-                                    (random.uniform(0, 1) * other.defense))
+            answer = input("What move would you like to make (Fight, Magic or Item)? ")
+            if answer.lower() == 'fight':
+                weapons.main()
+                weapon_list = weapons.weapon_names[0]
+                for weapon in weapon_list:
+                    print (weapon_list)
+##                other.health -= int(random.randint(1, 50) / 
+##                                    (random.uniform(0, 1) * other.defense))
             else:
                 print("you stumble...")
 
@@ -52,9 +61,11 @@ def main():
         # Display outcome
         if player.health > 0:
             print("You killed the {0.name}.".format(enemy))
+            level_modulde.add_xp()
             randomizer()
         elif enemy.health > 0:
             print("The {0.name} killed you.".format(enemy))
+            sys.exit()
 
     
 
@@ -71,7 +82,7 @@ def main():
                    Enemy("Fairy", 35, 3, 50), Enemy("Fairy God", 65, 18, 100)]
         battle(Player(), random.choice(enemies))
 
-def randomizer():        
+def randomizer():
     number = random.randint(1, 100)
     while number > 45:
         number = random.randint(1, 100)
