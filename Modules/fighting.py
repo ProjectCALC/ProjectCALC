@@ -4,43 +4,64 @@ import sys
 import level_module
 import weapons
 import pickle
-
-
+import decimal
+global weapon_list
+global xp
+xp = level_module.xp
+weapon_list = pickle.load(open("weapons.txt", "rb"))
+weapon_list_lower = pickle.load(open("weapons_lower.txt", "rb"))
 
 def main():
     class Character:
 
         def __init__(self, health):
             self.health = health
-
-        def attack(self, other):
-            
+        def attack(self, other):     
             raise NotImplementedError
 
     class Player(Character):
 
         def __init__(self, health=100):
+
             super().__init__(health)
 
         def attack(self, other):
-            weapon.main()
-            answer = input("What move would you like to make (Fight, Magic or Item)? ")
+            answer = input("What would you like to do? (Fight, Magic or Item) ")
             if answer.lower() in ['fight','magic','item']:
                 if answer.lower() == 'fight':
-                    weapon_list = pickle.load(open("weapons.txt", "rb"))
-                    for weapon in weapon_list:
-                        print (weapon_list)
-                    weapon_choice = input('Which weapon would you like to use?')
-                    while weapon_choice not in weapon_list:
+                    for i in weapon_list:
+                        print (i)
+                    weapon_choice = input('Which weapon would you like to use? ')
+                    while weapon_choice not in weapon_list_lower:
                         print('Please enter a valid weapon name.')
-                        weapon_choice = input('Which weapon would you like to use? (Enter the number)')
-                    if weapon_choice in weapon_list:
-                        if weapon_choice = '1':
-                            other.health -= int(weapon.sword)
-                            
+                        weapon_choice = input('Which weapon would you like to use? ')
+                    if weapon_choice == 'sword':
+                        sword = int(decimal.Decimal(weapons.sword))
+                        other.health -= (sword * int(decimal.Decimal(random.uniform(0.1, 1.4))))
+                    elif weapon_choice == 'super sword':
+                        super_sword = (int(decimal.Decimal(weapons.super_sword)))
+                        other.health -= (super_sword * int(decimal.Decimal(random.uniform(0.1, 1.4))))
+                    elif weapon_choice == 'hyper sword':
+                        hyper_sword = (int(decimal.Decimal(weapons.hyper_sword)))
+                        other.health -= (hyper_sword * int(decimal.Decimal(random.uniform(0.1, 1.4))))
+                    elif weapon_choice == 'mega blade':
+                        mega_blade = (int(decimal.Decimal(weapons.mega_blade)))
+                        other.health -= (mega_blade* int(decimal.Decimal(random.uniform(0.1, 1.4))))
+                    elif weapon_choice == 'bow':
+                        bow = (int(decimal.Decimal(weapons.bow)))
+                        other.health -= (bow * int(decimal.Decimal(random.uniform(0.1, 1.4))))
+                    elif weapon_choice == 'super bow':
+                        super_bow = (int(decimal.Decimal(weapons.super_bow)))
+                        other.health -= (super_bow * int(decimal.Decimal(random.uniform(0.1, 1.4))))
+                    elif weapon_choice == 'hyper bow':
+                        hyper_bow = (int(decimal.Decimal(weapons.hyper_bow)))
+                        other.health -= (hyper_bow * int(decimal.Decimal(random.uniform(0.1, 1.4))))
+                    elif weapon_choice == 'mega bow':
+                        mega_bow = (int(decimal.Decimal(weapons.mega_bow)))
+                        other.health -= (mega_bow * int(decimal.Decimal(random.uniform(0.1, 1.4))))                
             while answer.lower() not in ['fight','magic','item']:
                 print('Please enter a valid option.')
-                answer = input("What move would you like to make (Fight, Magic or Item)? ")
+                answer = input("What would you like to do? (Fight, Magic or Item) ")
                 
 
     class Enemy(Character):
@@ -70,11 +91,19 @@ def main():
         # Display outcome
         if player.health > 0:
             print("You killed the {0.name}.".format(enemy))
-            level_modulde.add_xp()
+            level_module.add_xp(xp)
             randomizer()
         elif enemy.health > 0:
             print("The {0.name} killed you.".format(enemy))
-            sys.exit()
+            continue_ = input('Continue? (y/n)')
+            if continue_ == 'y':
+                randomizer()
+            elif continue_ == 'n':
+                sys.exit()
+            while continue_ not in ['y','n']:
+                print('Please enter a valid answer.')
+                continue_ = input('Continue? (y/n)')
+                
 
     
 
