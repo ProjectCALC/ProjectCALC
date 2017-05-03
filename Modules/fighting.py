@@ -58,7 +58,11 @@ def main():
                         other.health -= (hyper_bow * int(decimal.Decimal(random.uniform(0.1, 1.4))))
                     elif weapon_choice == 'mega bow':
                         mega_bow = (int(decimal.Decimal(weapons.mega_bow)))
-                        other.health -= (mega_bow * int(decimal.Decimal(random.uniform(0.1, 1.4))))                
+                        other.health -= (mega_bow * int(decimal.Decimal(random.uniform(0.1, 1.4))))   
+                elif answer.lower() == 'magic':
+                    for i in magic_list:
+                        print(i)
+                    magic_choice = input('What would you like to cast?')
             while answer.lower() not in ['fight','magic','item']:
                 print('Please enter a valid option.')
                 answer = input("What would you like to do? (Fight, Magic or Item) ")
