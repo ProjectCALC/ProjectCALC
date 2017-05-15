@@ -24,11 +24,11 @@ elif magic_level == 9:
 
 
 #damage
-fireball = 10(magic_level) * random.uniform(1,1.4)
-tornado = 10(magic_level) * random.uniform(1,1.4)
-light_sword = 10(magic_level) * random.uniform(1,1.4)
-light_bow = 10(magic_level) * random.uniform(1,1.4)
-dark_sword = 10(magic_level) * random.uniform(1,1.4)
-dark_bow = 10(magic_level) * random.uniform(1,1.4)
-ultra_black_hole = 10(magic_level) * random.uniform(1,1.4)
+fireball = 10(magic_level) * random.uniform(1,1)
+tornado = 10(magic_level) * random.uniform(1,1.5)
+light_sword = 10(magic_level) * random.uniform(1,2)
+light_bow = 10(magic_level) * random.uniform(1,3)
+dark_sword = 10(magic_level) * random.uniform(1,4.5)
+dark_bow = 10(magic_level) * random.uniform(1,5)
+ultra_black_hole = 10(magic_level) * random.uniform(1,10)
   
