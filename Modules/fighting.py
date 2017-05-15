@@ -29,7 +29,7 @@ def main():
     class Player(Character):
 
         def __init__(self, health=100):
-
+            self.shield = 'False'
             super().__init__(health)
 
         def attack(self, other):
@@ -96,7 +96,8 @@ def main():
 
         def attack(self, other):
             print("The {0.name} attacks...".format(self))
-            other.health -= int(self.strength * random.uniform(0.1, 1.4))
+            shield_block()
+            armour_block()
 
     def battle(player, enemy):
         print ("An enemy {0.name} appears!".format(enemy))
@@ -163,5 +164,14 @@ def drop():
         inventory_save.close()
         
         
-    
-
+def shield_block():
+    if self.shield == 'True':
+        block = random.randint(1,10)
+        if block < 4:
+            print('You blocked the attack!')
+            damage = 0
+            shield_type_duration -= 2
+        elif block > 4 and block < 9:
+            print('You did not block the attack!')
+            self.health -= 
+            
