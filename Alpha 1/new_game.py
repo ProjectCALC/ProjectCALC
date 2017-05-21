@@ -19,6 +19,6 @@ def main():
         save_load.save()
         ingame_menu.main()
     elif answer =='2':
-        print('leave then you idiot')
+        print('Leave then you idiot')
     while answer not in ['1','2']:
         print('Please enter a valid answer.')
