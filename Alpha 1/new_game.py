@@ -22,3 +22,4 @@ def main():
         print('Leave then you idiot')
     while answer not in ['1','2']:
         print('Please enter a valid answer.')
+        answer = input('OK! '+cc.first_name+', are you ready to start your journey? (1.Yes or 2.No) ')
