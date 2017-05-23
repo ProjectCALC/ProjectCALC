@@ -86,9 +86,9 @@ class Enemy(Character):
         self.name = name
         self.strength = strength
         self.defense = defense
-        def attack (self, other):
-            print("The {0.name} attacks...".format(self))
-            other.health -= int(self.strength * random.uniform(0.1, 1.4))
+    def attack (self, other):
+        print("The {0.name} attacks...".format(self))
+        other.health -= int(self.strength * random.uniform(0.1, 1.4))
         
     
   
