@@ -1,6 +1,7 @@
 import character_creation as cc
 import ingame_menu
 import save_load
+import time
 
 def main():
     print('What you can do in this version: ')
@@ -20,6 +21,7 @@ def main():
         ingame_menu.main()
     elif answer =='2':
         print('Leave then you idiot')
+        time.sleep(99)
     while answer not in ['1','2']:
         print('Please enter a valid answer.')
         answer = input('OK! '+cc.first_name+', are you ready to start your journey? (1.Yes or 2.No) ')
