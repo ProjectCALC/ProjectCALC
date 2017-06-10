@@ -1,8 +1,6 @@
 import pickle
 import inventory
-import magic
-import weapons
-import level_module
+import sys
 
 def load():
     savefile = pickle.load(open('savefile.pkl','rb'))
@@ -25,16 +23,19 @@ def load():
     print('Magic Level: '+str(magic_level)+'')
     answer = input('Load this save? (1.Yes or 2.No) ')
     if answer == '1':
-        print('')
-        pass
+        print('Game loaded.')
     elif answer == '2':
         print('See you later.')
+        sys.exit()
     while answer not in ['1','2']:
         print('Please enter a valid answer.')
         answer = input('Load this save? (1.Yes or 2.No) ')
     
 
 def save():
+    import level_module
+    import magic
+    import weapons
     savefile_import = open('savefile.pkl','rb')
     savefile_r = pickle.load(savefile_import)
     savefile_w = open('savefile.pkl','wb')
@@ -54,4 +55,15 @@ def save():
     savefile_w.close()
     savefile_import.close()
     print('Game saved.')
+
+def temp():
+    temp = open('temp.pkl','wb')
+    savefile = pickle.load(open('savefile.pkl','rb'))
+    xp = savefile[10]
+    level = savefile[7]
+    old_level = savefile[8]
+    magic_level = savefile[9]
+    temp_list = [xp, level, old_level, magic_level]
+    pickle.dump(temp_list, temp)
+    temp.close()
     

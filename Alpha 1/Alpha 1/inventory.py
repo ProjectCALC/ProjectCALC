@@ -1,7 +1,7 @@
 import pickle
 
 global inventory_list
-inventory_list = []
+inventory_list = pickle.load(open('inventory.pkl','rb'))
 
 
 def display():

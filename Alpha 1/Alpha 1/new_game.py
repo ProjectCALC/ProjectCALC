@@ -1,6 +1,7 @@
 import character_creation as cc
-import ingame_menu
-import save_load
+import time
+import sys
+
 
 def main():
     print('What you can do in this version: ')
@@ -14,12 +15,13 @@ def main():
     cc.age_func()
     cc.show_char()
     cc.confirm()
-    answer = input('OK! '+cc.first_name+', are you ready to start your journey? (1.Yes or 2.No) ')
+    answer = input('OK! ' + cc.first_name + ', are you ready to start your journey? (1.Yes or 2.No) ')
     if answer == '1':
-        save_load.save()
-        ingame_menu.main()
-    elif answer =='2':
+        print('Then here we go!')
+        time.sleep(1)
+    elif answer == '2':
         print('leave then you idiot')
-    while answer not in ['1','2']:
+        sys.exit()
+    while answer not in ['1', '2']:
         print('Please enter a valid answer.')
         answer = input('OK! ' + cc.first_name + ', are you ready to start your journey? (1.Yes or 2.No) ')
