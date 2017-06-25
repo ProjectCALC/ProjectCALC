@@ -71,7 +71,6 @@ def temp(level, old_level, magic_level, xp, wvar, wcounter):
     del temp[7]
     temp_list = [int(level), int(old_level), int(magic_level), int(xp), int(wvar), int(wcounter)]
     temp.extend(temp_list)
-    print(temp)
     pickle.dump(temp, tempw)
     tempw.close()
     

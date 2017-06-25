@@ -8,6 +8,7 @@ magic_list = ['Fireball','Heal','Tornado']
 #adds a spell to magic_list for every magic level-up
 if int(level_module.magic_level) == 2:
   magic_list.append('Light Sword')
+  counter += 1
 elif int(level_module.magic_level) == 3: 
   magic_list.append('Light Bow')
 elif int(level_module.magic_level) == 4: 
