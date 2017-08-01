@@ -3,16 +3,15 @@ import sys
 import random
 
 
-def main():
-         wizard_right = pygame.image.load('images\wizardright.png')
-         wizard_left = pygame.image.load('images\wizardleft.png')
-         icon = pygame.image.load('Image_P.gif')
-         
+def main(       icon = pygame.image.load('Image_P.gif')
+
          pygame.init()
          screen = pygame.display.set_mode((400, 300))
-         pygame.display.set_icon(icon)
          pygame.display.set_caption('CalcRPG')
-         done = False
+         done = False):
+         wizard_right = pygame.image.load('images\wizardright.png')
+         wizard_left = pygame.image.load('images\wizardleft.png')
+
          x = 30
          y = 30
          clock = pygame.time.Clock()

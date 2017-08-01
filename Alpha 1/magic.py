@@ -3,7 +3,9 @@ import level_module
 import pickle
 
 temp = pickle.load(open('temp.pkl','rb'))
+
 mcounter = temp[13]
+
 unlockable_spells = ['Light Sword','Light Bow','Dark Sword','Dark Bow','Ultra Black Hole']
 
 #list of spells that you can cast
@@ -25,7 +27,8 @@ elif int(level_module.magic_level) == 5:
 elif int(level_module.magic_level) == 6:
   magic_list.append('Ultra Black Hole')
   mcounter += 1
-print('Congrats! You''ve just unlocked the'+unlockable_spells[int(mcounter)-1]+' spell!')
+if mcounter != 0:
+    print('Congrats! You''ve just unlocked the '+unlockable_spells[int(mcounter)-1]+' spell!')
 
 
 #damage
@@ -39,10 +42,10 @@ ultra_black_hole = 10 * int(level_module.magic_level) * random.uniform(1,1.4)
 heal = 6 * int(int(level_module.magic_level)) * random.uniform(1,1.4)
 
 def display():
-  print('Your spells: ')
-  for i in magic_list:
-    print(i)
-  print('')
-  print('')
-  print('')
+    print('Your spells: ')
+    for i in magic_list:
+        print(i)
+    print('')
+    print('')
+    print('')
   

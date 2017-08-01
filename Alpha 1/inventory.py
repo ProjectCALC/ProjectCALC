@@ -1,6 +1,9 @@
 import pickle
 
 global inventory_list
+inventory_list = open('inventory.pkl','wb')
+pickle.dump('default', inventory_list)
+inventory_list.close()
 inventory_list = pickle.load(open('inventory.pkl','rb'))
 
 

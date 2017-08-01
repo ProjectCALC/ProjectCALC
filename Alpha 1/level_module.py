@@ -10,6 +10,7 @@ magic_level = temp[9]
 xp = temp[10]
 wvar = temp[11]
 wcounter = temp[12]
+mcounter = temp[13]
 
 
 def main():
@@ -20,6 +21,7 @@ def main():
     xp = temp[10]
     wvar = temp[11]
     wcounter = temp[12]
+    mcounter = temp[13]
     if level == 100:
         pass
     else:
@@ -47,7 +49,8 @@ def main():
         xp = xp
         wvar = wvar
         wcounter = wcounter
-        save_load.temp(level, old_level, magic_level, xp, wvar, wcounter)
+        mcounter = mcounter
+        save_load.temp(level, old_level, magic_level, xp, wvar, wcounter, mcounter)
         
 
 

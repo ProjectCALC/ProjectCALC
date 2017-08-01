@@ -2,6 +2,13 @@ import level_module
 import pickle
 import random
 
+# temp = open('temp.pkl','wb')
+# pickle.dump('default', temp)
+# temp.close()
+temp = pickle.load(open('temp.pkl','rb'))
+
+wcounter = temp[12]
+wvar = temp[11]
 weapon_list = ['Sword','Bow']
 unlockable_weapons = ['Super Sword','Super Bow','Hyper Sword','Hyper Bow','Mega Blade','Mega Bow']
 if level_module.level == 48 or int(level_module.level) > 48:
