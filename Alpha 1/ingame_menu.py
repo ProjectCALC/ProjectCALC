@@ -33,6 +33,6 @@ def main():
         sys.exit()
     while answer not in ['1','2','3','4','5']:
         print('Please enter a valid answer.')
-        answer = input('What would you like to do? (1.Go to next fight, 2.Inventory, 3.Spells, 4.Save or 5.Exit) ')
+        answer = input('What would you like to do? (1.Go to next fight, 2.Inventory, 3.Spells, 4.Show stats, 5.Save or 6.Exit) ')
 
     

@@ -6,6 +6,7 @@ import ingame_menu
 import new_game
 import sys
 import os
+import pickle
 from pathlib import Path
 
 
@@ -20,9 +21,32 @@ def main():
             if deleteSave == '1':
                 os.remove("savefile.pkl")
                 os.remove("inventory.pkl")
+                os.remove('temp.pkl')
                 print("Savefile deleted!")
                 time.sleep(2)
                 new_game.main()
+                temp = open('temp.pkl', 'wb')
+                init_list = ['fn', 'ln', 'gen', 'age', 'inv', 'mag', 'wea', '1', '0', '1', '0', '0', '0', '0']
+                pickle.dump(init_list, temp)
+                temp.close()
+                temp = pickle.load(open('temp.pkl', 'rb'))
+                new_temp = temp
+                temp = open('temp.pkl', 'wb')
+                del new_temp[7]
+                del new_temp[7]
+                del new_temp[7]
+                del new_temp[7]
+                level = '1'
+                old_level = '0'
+                magic_level = '1'
+                xp = '0'
+                new_temp.insert(7, level)
+                new_temp.insert(8, old_level)
+                new_temp.insert(9, magic_level)
+                new_temp.insert(10, xp)
+                print(new_temp)
+                pickle.dump(new_temp, temp)
+                temp.close()
                 save_load.save()
                 ingame_menu.main()
             elif deleteSave == '2':
@@ -30,6 +54,28 @@ def main():
                 main()
         else:
             new_game.main()
+            temp = open('temp.pkl', 'wb')
+            init_list = ['fn', 'ln', 'gen', 'age', 'inv', 'mag', 'wea', '1', '0', '1', '0', '0', '0', '0']
+            pickle.dump(init_list, temp)
+            temp.close()
+            temp = pickle.load(open('temp.pkl','rb'))
+            new_temp = temp
+            temp = open('temp.pkl','wb')
+            del new_temp[7]
+            del new_temp[7]
+            del new_temp[7]
+            del new_temp[7]
+            level = '1'
+            old_level = '0'
+            magic_level = '1'
+            xp = '0'
+            new_temp.insert(7, level)
+            new_temp.insert(8, old_level)
+            new_temp.insert(9, magic_level)
+            new_temp.insert(10, xp)
+            print(new_temp)
+            pickle.dump(new_temp, temp)
+            temp.close()
             save_load.save()
             ingame_menu.main()
 
