@@ -44,8 +44,8 @@ def main():
                     old_level += 9
                     print('Good job! Your magic level is now ' + str(magic_level) + '!')
                     time.sleep(2)
-            if level != old_level + 9:
-                pass
+                elif level != old_level + 9:
+                    pass
         level = level
         old_level = old_level
         magic_level = magic_level

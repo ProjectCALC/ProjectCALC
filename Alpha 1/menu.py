@@ -33,8 +33,6 @@ def main():
             save_load.save()
             ingame_menu.main()
 
-
-
     elif answer == '2':
         try:
             save_load.load()

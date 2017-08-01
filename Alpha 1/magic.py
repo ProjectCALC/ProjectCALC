@@ -1,6 +1,7 @@
 import random
 import level_module
 import pickle
+import menu
 
 temp = pickle.load(open('temp.pkl','rb'))
 
@@ -12,10 +13,12 @@ unlockable_spells = ['Light Sword','Light Bow','Dark Sword','Dark Bow','Ultra Bl
 magic_list = ['Fireball','Heal','Tornado']
 
 #adds a spell to magic_list for every magic level-up
-if int(level_module.magic_level) == 2:
+if int(temp[9]) < 2:
+    menu.main()
+elif int(level_module.magic_level) == 2:
   magic_list.append('Light Sword')
   mcounter += 1
-elif int(level_module.magic_level) == 3: 
+elif int(level_module.magic_level) == 3:
   magic_list.append('Light Bow')
   mcounter += 1
 elif int(level_module.magic_level) == 4: 
@@ -27,8 +30,8 @@ elif int(level_module.magic_level) == 5:
 elif int(level_module.magic_level) == 6:
   magic_list.append('Ultra Black Hole')
   mcounter += 1
-if mcounter != 0:
-    print('Congrats! You''ve just unlocked the '+unlockable_spells[int(mcounter)-1]+' spell!')
+
+print('Congrats! You''ve just unlocked the '+unlockable_spells[int(mcounter)-1]+' spell!')
 
 
 #damage
