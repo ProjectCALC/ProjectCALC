@@ -28,6 +28,11 @@ def main():
             elif deleteSave == '2':
                 print("Savefile not deleted.")
                 main()
+        else:
+            new_game.main()
+            save_load.save()
+            ingame_menu.main()
+
 
 
     elif answer == '2':

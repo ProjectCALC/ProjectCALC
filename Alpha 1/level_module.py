@@ -1,6 +1,7 @@
 import random
 import pickle
 import save_load
+import time
 
 
 temp = pickle.load(open('temp.pkl','rb'))
@@ -28,20 +29,22 @@ def main():
         add = random.randint(1, 20)
         intxp = int(xp)
         xp = intxp + add
-        if intxp < 100:
+        if xp < 100:
             pass
-        elif intxp == 100 or intxp > 100:
+        elif xp == 100 or xp > 100:
             if level > 91:
                 pass
             elif level < 91:
                 xp = 0
                 level += 1
-                print('Congrats! You''ve leveled up to level ' + level + '!')
-                if level == old_level+9:
+                print('Congrats! You''ve leveled up to level ' + str(level) + '!')
+                time.sleep(2)
+                if level == old_level + 9:
                     magic_level += 1
                     old_level += 9
-                    print('Good job! Your magic level is now ' + magic_level + '!')
-            while level != old_level + 9:
+                    print('Good job! Your magic level is now ' + str(magic_level) + '!')
+                    time.sleep(2)
+            if level != old_level + 9:
                 pass
         level = level
         old_level = old_level

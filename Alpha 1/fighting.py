@@ -8,15 +8,17 @@ import magic
 import inventory
 import save_load
 import ingame_menu
+temp_ = pickle.load(open('temp.pkl', 'rb'))
 
 global level
 inventory_list = inventory.inventory_list
-xp = level_module.xp
-level = level_module.level
-magic_level = level_module.magic_level
-old_level = level_module.old_level
-wvar = level_module.wvar
-wcounter = level_module.wcounter
+level = temp_[7]
+old_level = temp_[8]
+magic_level = temp_[9]
+xp = temp_[10]
+wcounter = temp_[11]
+wvar = temp_[12]
+mcounter = temp_[13]
 weapon_list = weapons.weapon_list
 magic_list = magic.magic_list
 savefile = pickle.load(open('savefile.pkl','rb'))
