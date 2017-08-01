@@ -155,7 +155,7 @@ def main():
         if 'Enemy("Goblin", 1, 5, 10)' not in enemies:
             enemies.extend([Enemy("Goblin", 1, 5, 10), Enemy("Skeleton", 3, 7, 10)])
             print(enemies)
-    elif level in range(5, 9):
+    elif int(level) in [5,6,7,8,9]:
         if Enemy("Spider", 5, 8, 20) not in enemies:
             enemies.extend(Enemy("Spider", 5, 8, 20), Enemy("Orc", 6, 9, 20))
     elif level in range(10, 14):
