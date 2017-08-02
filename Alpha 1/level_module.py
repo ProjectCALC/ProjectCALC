@@ -4,6 +4,7 @@ import save_load
 import time
 
 
+
 temp = pickle.load(open('temp.pkl','rb'))
 level = temp[7]
 old_level = temp[8]
@@ -37,7 +38,7 @@ def main():
             elif level < 91:
                 xp = 0
                 level += 1
-                print('Congrats! You''ve leveled up to level ' + str(level) + '!')
+                print("Congrats! You've leveled up to level " + str(level) + "!")
                 time.sleep(2)
                 if level == old_level + 9:
                     magic_level += 1
