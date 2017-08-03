@@ -2,6 +2,8 @@ import random
 import pickle
 import save_load
 import time
+import magic
+import weapons
 
 
 
@@ -13,7 +15,7 @@ xp = temp[10]
 wvar = temp[11]
 wcounter = temp[12]
 mcounter = temp[13]
-
+health = int(temp[14])
 
 def main():
     temp = pickle.load(open('temp.pkl', 'rb'))
@@ -24,10 +26,11 @@ def main():
     wvar = temp[11]
     wcounter = temp[12]
     mcounter = temp[13]
+    health = int(temp[14])
     if level == 100:
         pass
     else:
-        add = random.randint(1, 20)
+        add = random.randint(1, 30)
         intxp = int(xp)
         xp = intxp + add
         if xp < 100:
@@ -39,12 +42,14 @@ def main():
                 xp = 0
                 level += 1
                 print("Congrats! You've leveled up to level " + str(level) + "!")
+                health += 2
                 time.sleep(2)
-                if level == old_level + 9:
+                if level == int(old_level) + 2:
                     magic_level += 1
                     old_level += 9
                     print('Good job! Your magic level is now ' + str(magic_level) + '!')
                     time.sleep(2)
+                    magic.main(mcounter, magic_level)
                 elif level != old_level + 9:
                     pass
         level = level
@@ -54,7 +59,8 @@ def main():
         wvar = wvar
         wcounter = wcounter
         mcounter = mcounter
-        save_load.temp(level, old_level, magic_level, xp, wvar, wcounter, mcounter)
+        health = health
+        save_load.temp(level, old_level, magic_level, xp, wvar, wcounter, mcounter, health)
         
 
 

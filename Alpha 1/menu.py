@@ -22,11 +22,12 @@ def main():
                 os.remove("savefile.pkl")
                 os.remove("inventory.pkl")
                 os.remove('temp.pkl')
+                os.remove('enemies.pkl')
                 print("Savefile deleted!")
                 time.sleep(2)
                 new_game.main()
                 temp = open('temp.pkl', 'wb')
-                init_list = ['fn', 'ln', 'gen', 'age', 'inv', 'mag', 'wea', '1', '0', '1', '0', '0', '0', '0']
+                init_list = ['fn', 'ln', 'gen', 'age', 'inv', 'mag', 'wea', '1', '0', '1', '0', '0', '0', '0','20']
                 pickle.dump(init_list, temp)
                 temp.close()
                 temp = pickle.load(open('temp.pkl', 'rb'))
@@ -55,7 +56,7 @@ def main():
         else:
             new_game.main()
             temp = open('temp.pkl', 'wb')
-            init_list = ['fn', 'ln', 'gen', 'age', 'inv', 'mag', 'wea', '1', '0', '1', '0', '0', '0', '0']
+            init_list = ['fn', 'ln', 'gen', 'age', 'inv', 'mag', 'wea', '1', '0', '1', '0', '0', '0', '0','20']
             pickle.dump(init_list, temp)
             temp.close()
             temp = pickle.load(open('temp.pkl','rb'))

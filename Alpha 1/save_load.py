@@ -1,7 +1,6 @@
 import pickle
 import inventory
 import sys
-import init
 
 def load():
     savefile = pickle.load(open('savefile.pkl','rb'))
@@ -16,6 +15,10 @@ def load():
     old_level = savefile[8]    
     magic_level = savefile[9]
     xp = savefile[10]
+    wcounter = savefile[11]
+    wvar = savefile[12]
+    mcounter = savefile[13]
+    health = savefile[14]
     print('Your character: ')
     print(''+first_name+' '+last_name+'')
     print('Gender: '+gender+'')
@@ -55,13 +58,14 @@ def save():
     wcounter = temp_[11]
     wvar = temp_[12]
     mcounter = temp_[13]
-    save_list = [first_name, last_name, gender, age, inventory_, magic_, weapons_, level_, old_level_, magic_level_, xp_, wcounter, wvar, mcounter]
+    health = temp_[14]
+    save_list = [first_name, last_name, gender, age, inventory_, magic_, weapons_, level_, old_level_, magic_level_, xp_, wcounter, wvar, mcounter, health]
     pickle.dump(save_list, savefile_w)
     savefile_w.close()
     savefile_import.close()
     print('Game saved.')
 
-def temp(level, old_level, magic_level, xp, wvar, wcounter, mcounter):
+def temp(level, old_level, magic_level, xp, wvar, wcounter, mcounter, health):
     temp_ = pickle.load(open('temp.pkl','rb'))
     tempw = open('temp.pkl','wb')
     temp = temp_
@@ -72,7 +76,8 @@ def temp(level, old_level, magic_level, xp, wvar, wcounter, mcounter):
     del temp[7]
     del temp[7]
     del temp[7]
-    temp_list = [int(level), int(old_level), int(magic_level), int(xp), int(wvar), int(wcounter), int(mcounter)]
+    del temp[7]
+    temp_list = [int(level), int(old_level), int(magic_level), int(xp), int(wvar), int(wcounter), int(mcounter), int(health)]
     temp.extend(temp_list)
     pickle.dump(temp, tempw)
     tempw.close()

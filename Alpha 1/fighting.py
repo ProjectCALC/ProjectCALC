@@ -5,15 +5,17 @@ import weapons
 import pickle
 import decimal
 import magic
-import inventory
 import save_load
 import ingame_menu
+import inventory
 import os
 
 temp = pickle.load(open('temp.pkl', 'rb'))
 
+
 global level
 inventory_list = inventory.inventory_list
+inventory_list_w = open('inventory.pkl','wb')
 level = temp[7]
 old_level = temp[8]
 magic_level = temp[9]
@@ -21,6 +23,7 @@ xp = temp[10]
 wcounter = temp[11]
 wvar = temp[12]
 mcounter = temp[13]
+health = temp[14]
 weapon_list = weapons.weapon_list
 magic_list = magic.magic_list
 savefile = pickle.load(open('savefile.pkl', 'rb'))
@@ -29,7 +32,7 @@ temp = pickle.load(open('temp.pkl', 'rb'))
 
 def drop ():
     item_list = ['Paper', 'Cardboard']
-    item_number = random.randint(0, 1)
+    item_number =  random.randint(0, 1)
     dropped_item = item_list[item_number]
     print('You picked up a ' + dropped_item.lower() + '!')
     put_in_inventory = input('Place in inventory? (1. Yes or 2. No) ')
@@ -38,18 +41,21 @@ def drop ():
         inventory_save = open('inventory.pkl', 'wb')
         pickle.dump(inventory_list, inventory_save)
         inventory_save.close()
+        print(''+dropped_item+' has been added to your inventory.')
     elif put_in_inventory == '2':
         print('Not placed in inventory.')
 
 
 def main ():
+    temp = pickle.load(open('temp.pkl', 'rb'))
+    health = temp[14]
     class Character:
         def __init__ (self, health):
             self.health = health
 
     class Player(Character):
-        def __init__ (self, health=100):
-            super().__init__(health)
+        def __init__ (self, health=health):
+            super().__init__(int(health))
 
         def attack (self, other):
             num = 0
@@ -100,6 +106,21 @@ def main ():
                     elif magic_choice == '3':
                         tornado = int(decimal.Decimal(magic.tornado))
                         other.health -= (tornado * int(decimal.Decimal(random.uniform(1, 1.4))))
+                    elif magic_choice == '4' and 'Light Sword' in magic_list:
+                        light_sword = int(decimal.Decimal(magic.light_sword))
+                        other.health -= (light_sword * int(decimal.Decimal(random.uniform(1, 1.4))))
+                    elif magic_choice == '5' and 'Light Bow' in magic_list:
+                        light_bow = int(decimal.Decimal(magic.light_bow))
+                        other.health -= (light_bow* int(decimal.Decimal(random.uniform(1, 1.4))))
+                    elif magic_choice == '6' and 'Dark Sword' in magic_list:
+                        dark_sword = int(decimal.Decimal(magic.dark_sword))
+                        other.health -= (dark_sword * int(decimal.Decimal(random.uniform(1, 1.4))))
+                    elif magic_choice == '7' and 'Dark Bow' in magic_list:
+                        dark_bow = int(decimal.Decimal(magic.dark_bow))
+                        other.health -= (dark_bow * int(decimal.Decimal(random.uniform(1, 1.4))))
+                    elif magic_choice == '8' and 'Ultra Black Hole' in magic_list:
+                        ultra_black_hole = int(decimal.Decimal(magic.ultra_black_hole))
+                        other.health -= (ultra_black_hole * int(decimal.Decimal(random.uniform(1, 1.4))))
                     else:
                         print('Please choose a valid spell to cast.')
 
@@ -151,55 +172,62 @@ def main ():
             ingame_menu.main()
 
     def enemyd ():
-        temp = pickle.load(open('temp.pkl', 'rb'))
-        level = temp[7]
-        global enemies
-        enemies = [Enemy("Goblin", 1, 5, 10), Enemy("Skeleton", 3, 7, 10), ]
         enemies_w = open('enemies.pkl','wb')
-        if int(level) == 2:
-            if Enemy("Soldier", 5, 8, 10) not in enemies:
-                enemies.extend((Enemy("Soldier", 5, 8, 10), Enemy("Orc", 6, 9, 20)))
-                print(
-                    'Enemies Soldier and Orc have been added to your enemy list. You can now encounter them in battle!')
-        elif level in range(10, 14):
-            if Enemy("Dwarf", 7, 9, 20) not in enemies:
-                enemies.extend(Enemy("Dwarf", 7, 9, 20), Enemy("Spider", 5, 8, 20))
-                print(
-                    'Enemies Dwarf and Spider have been added to your enemy list. You can now encounter them in battle!')
-        elif level in range(15, 19):
-            if Enemy("Elf", 9, 11, 30) not in enemies:
-                enemies.extend(Enemy("Elf", 9, 11, 30), Enemy("Super Soldier", 10, 14, 25))
-                print(
-                    'Enemies Elf and Super Soldier have been added to your enemy list. You can now encounter them in battle!')
-        elif level in range(20, 24):
-            if Enemy("Demon", 11, 12, 40) not in enemies:
-                enemies.extend(Enemy("Demon", 11, 12, 40), Enemy("Fairy", 35, 3, 40))
-                print(
-                    'Enemies Demon and Fairy have been added to your enemy list. You can now encounter them in battle!')
-        elif level in range(25, 29):
-            if Enemy("Goblin King", 20, 15, 50) not in enemies:
-                enemies.extend(Enemy("Goblin King", 20, 15, 50), Enemy("Skeleton Lord", 25, 17, 50))
-                print(
-                    'Enemies Goblin King and Skeleton Lord have been added to your enemy list. You can now encounter them in battle!')
-        elif level in range(30, 34):
-            if Enemy("Giant Spider", 27, 19, 60) not in enemies:
-                enemies.extend(Enemy("Giant Spider", 27, 19, 60), Enemy("Orc Leader", 31, 20, 60))
-                print(
-                    'Enemies Giant Spider and Orc Leader have been added to your enemy list. You can now encounter them in battle!')
-        elif level in range(35, 39):
-            if Enemy("Dwarf King", 32, 21, 60) not in enemies:
-                enemies.extend(Enemy("Dwarf King", 32, 21, 60), Enemy("Grand Elf", 34, 22, 70))
-                print(
-                    'Enemies Dwarf King and Grand Elf have been added to your enemy list. You can now encounter them in battle!')
-        elif level in range(40, 44):
-            if Enemy("Demon Lord", 36, 24, 100) not in enemies:
-                enemies.extend(Enemy("Demon Lord", 36, 24, 100), Enemy("Fairy God", 65, 18, 100))
-                print(
-                    'Enemies Demon Lord and Fairy God have been added to your enemy list. You can now encounter them in battle!')
-        elif level == 100:
-            enemies = [Enemy('Francis Faygo, 100, 100, 100')]
-        pickle.dump(enemies, enemies_w)
-        enemies_w.close()
+        if os.stat("enemies.pkl").st_size == 0:
+                enemies_list = [Enemy("Goblin", 1, 5, 10), Enemy("Skeleton", 3, 7, 10), ]
+                pickle.dump(enemies_list, enemies_w)
+                enemies_w.close()
+                global enemies
+                enemies = pickle.load(open('enemies.pkl', 'rb'))
+        else:
+            enemies = pickle.load(open('enemies.pkl', 'rb'))
+            enemies_w = open('enemies.pkl', 'wb')
+            temp = pickle.load(open('temp.pkl', 'rb'))
+            level = temp[7]
+            if int(level) in [5,6,7,8,9]:
+                if Enemy("Soldier", 5, 8, 10) not in enemies:
+                    enemies.extend((Enemy("Soldier", 5, 8, 10), Enemy("Orc", 6, 9, 20)))
+                    print(
+                        'Enemies Soldier and Orc have been added to your enemy list. You can now encounter them in battle!')
+            elif int(level) in range(10, 14):
+                if Enemy("Dwarf", 7, 9, 20) not in enemies:
+                    enemies.extend(Enemy("Dwarf", 7, 9, 20), Enemy("Spider", 5, 8, 20))
+                    print(
+                        'Enemies Dwarf and Spider have been added to your enemy list. You can now encounter them in battle!')
+            elif int(level) in range(15, 19):
+                if Enemy("Elf", 9, 11, 30) not in enemies:
+                    enemies.extend(Enemy("Elf", 9, 11, 30), Enemy("Super Soldier", 10, 14, 25))
+                    print(
+                        'Enemies Elf and Super Soldier have been added to your enemy list. You can now encounter them in battle!')
+            elif int(level) in range(20, 24):
+                if Enemy("Demon", 11, 12, 40) not in enemies:
+                    enemies.extend(Enemy("Demon", 11, 12, 40), Enemy("Fairy", 35, 3, 40))
+                    print(
+                        'Enemies Demon and Fairy have been added to your enemy list. You can now encounter them in battle!')
+            elif int(level) in range(25, 29):
+                if Enemy("Goblin King", 20, 15, 50) not in enemies:
+                    enemies.extend(Enemy("Goblin King", 20, 15, 50), Enemy("Skeleton Lord", 25, 17, 50))
+                    print(
+                        'Enemies Goblin King and Skeleton Lord have been added to your enemy list. You can now encounter them in battle!')
+            elif int(level) in range(30, 34):
+                if Enemy("Giant Spider", 27, 19, 60) not in enemies:
+                    enemies.extend(Enemy("Giant Spider", 27, 19, 60), Enemy("Orc Leader", 31, 20, 60))
+                    print(
+                        'Enemies Giant Spider and Orc Leader have been added to your enemy list. You can now encounter them in battle!')
+            elif int(level) in range(35, 39):
+                if Enemy("Dwarf King", 32, 21, 60) not in enemies:
+                    enemies.extend(Enemy("Dwarf King", 32, 21, 60), Enemy("Grand Elf", 34, 22, 70))
+                    print(
+                        'Enemies Dwarf King and Grand Elf have been added to your enemy list. You can now encounter them in battle!')
+            elif int(level) in range(40, 44):
+                if Enemy("Demon Lord", 36, 24, 100) not in enemies:
+                    enemies.extend(Enemy("Demon Lord", 36, 24, 100), Enemy("Fairy God", 65, 18, 100))
+                    print(
+                        'Enemies Demon Lord and Fairy God have been added to your enemy list. You can now encounter them in battle!')
+            elif int(level) == 100:
+                enemies = [Enemy('Francis Faygo, 100, 100, 100')]
+            pickle.dump(enemies, enemies_w)
+            enemies_w.close()
 
     enemyd()
     battle(Player(), random.choice(enemies))
