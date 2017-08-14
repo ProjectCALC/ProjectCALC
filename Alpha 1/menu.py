@@ -88,7 +88,7 @@ def main():
             print('')
             print('')
         except FileNotFoundError:
-            print('You do not have a savefile. Please create one from the menu.')
+            print('You do not have a savefile. Please create a new game.')
             print('')
             print('')
             print('')
