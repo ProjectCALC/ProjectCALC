@@ -42,7 +42,7 @@ light_sword = 10 * int(temp[9]) * random.uniform(1,1.4)
 light_bow = 10 * int(temp[9]) * random.uniform(1,1.4)
 dark_sword = 10 * int(temp[9]) * random.uniform(1,1.4)
 dark_bow = 10 * int(temp[9]) * random.uniform(1,1.4)
-ultra_black_hole = 10 * int(temp[9]) * random.uniform(1,1.4)
+ultra_black_hole = 10 * int(temp[9]) * random.uniform(1,1.5)
 heal = 6 * int(int(temp[9])) * random.uniform(1,1.4)
 
 def display():
